@@ -105,6 +105,9 @@ spec:
         - name: xsuaa-volume
           mountPath: "/etc/secrets/sapcp/xsuaa/xsuaa-service"
           readOnly: true
+        - name: saas-registry-volume
+          mountPath: "/etc/secrets/sapcp/saas-registry/saas-registry-service"
+          readOnly: true
         - mountPath: /tmp
           name: tmp
       securityContext:
@@ -115,6 +118,9 @@ spec:
       - name: xsuaa-volume
         secret:
           secretName: xsuaa-service-binding
+      - name: saas-registry-volume
+        secret:
+          secretName: saas-registry-service-binding
 status: {}
 
 ---
