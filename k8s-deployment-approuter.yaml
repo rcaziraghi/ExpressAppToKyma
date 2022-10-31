@@ -6,7 +6,7 @@ metadata:
 data:
   destinations: |
     [
-      {"name":"dest_kyma_multitenant_node","url":"https://38e15b50trial-node.eba936b","forwardAuthToken" : true}
+      {"name":"dest_kyma_multitenant_node","url":"https://trial-38e15b50trial-node.eba936b","forwardAuthToken" : true}
     ]
 ---
 apiVersion: apps/v1
@@ -96,11 +96,17 @@ spec:
           privileged: false
           readOnlyRootFilesystem: false
         volumeMounts:
+        - name: xsuaa-volume
+          mountPath: "/etc/secrets/sapcp/xsuaa/xsuaa-service"
+          readOnly: true
         - mountPath: /tmp
           name: tmp
       securityContext:
         runAsNonRoot: true
       volumes:
+      - name: xsuaa-volume
+        secret:
+          secretName: xsuaa-service-binding
       - emptyDir: {}
         name: tmp
 status: {}
@@ -145,7 +151,7 @@ spec:
     - HEAD
     path: /.*
   service:  
-    host: 38e15b50trial-approuter.eba936b
+    host: trial-38e15b50trial-approuter.eba936b
     name: kyma-multitenant-approuter-multitenancy
     port: 8080
 ---
