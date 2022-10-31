@@ -1,6 +1,6 @@
 ################### XSUAA ###################
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceInstance
 metadata:
   annotations:
@@ -8,8 +8,8 @@ metadata:
   creationTimestamp: null
   name: xsuaa-service
 spec:
-  clusterServiceClassExternalName: xsuaa
-  clusterServicePlanExternalName: application
+  serviceOfferingName: xsuaa                    #OLD clusterServiceClassExternalName
+  servicePlanName: application                  #OLD clusterServicePlanExternalName
   parameters:
     xsappname: multitenant-kyma-demo
     tenant-mode: shared  # define the application provider tenant as a shared tenant
@@ -24,26 +24,27 @@ spec:
       - https://*.eba936b/**
 
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceBinding
 metadata:
   creationTimestamp: null
   name: xsuaa-service-binding
-spec:
-  externalID: ""
-  instanceRef:
-    name: xsuaa-service
+spec: 
+  #externalID: ""
+  #instanceRef:
+    #name: xsuaa-service
+  serviceInstanceName: xsuaa-service
   secretName: xsuaa-service-binding
 
 ################### SaaS Provisioning Service ###################
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceInstance
 metadata:
   name: saas-registry-service
 spec:
-  clusterServiceClassExternalName: saas-registry
-  clusterServicePlanExternalName: application
+  serviceOfferingName: saas-registry              #OLD clusterServiceClassExternalName
+  servicePlanName: application                    #OLD clusterServicePlanExternalName
   parameters:
     # the xsappname refers to the one defined in xsuaa service
     xsappname: multitenant-kyma-demo
@@ -56,14 +57,15 @@ spec:
       onSubscriptionAsync: false
       onUnSubscriptionAsync: false
 ---
-apiVersion: servicecatalog.k8s.io/v1beta1
+apiVersion: services.cloud.sap.com/v1
 kind: ServiceBinding
 metadata:
   creationTimestamp: null
   name: saas-registry-service-binding
 spec:
-  externalID: ""
-  instanceRef:
-    name: saas-registry-service
+  #externalID: ""
+  #instanceRef:
+  #  name: saas-registry-service
+  serviceInstanceName: saas-registry-service
   secretName: saas-registry-service-binding
 
