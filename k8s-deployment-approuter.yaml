@@ -6,7 +6,7 @@ metadata:
 data:
   destinations: |
     [
-      {"name":"dest_kyma_multitenant_node","url":"https://trial-38e15b50trial-node.eba936b","forwardAuthToken" : true}
+      {"name":"dest_kyma_multitenant_node","url":"https://38e15b50trial-node.eba936b","forwardAuthToken" : true}
     ]
 ---
 apiVersion: apps/v1
@@ -151,7 +151,7 @@ spec:
     - HEAD
     path: /.*
   service:  
-    host: trial-38e15b50trial-approuter.eba936b
+    host: 38e15b50trial-approuter
     name: kyma-multitenant-approuter-multitenancy
     port: 8080
 ---
