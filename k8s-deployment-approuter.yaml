@@ -6,7 +6,7 @@ metadata:
 data:
   destinations: |
     [
-      {"name":"dest_kyma_multitenant_node","url":"https://38e15b50trial-node.eba936b","forwardAuthToken" : true}
+      {"name":"dest_kyma_multitenant_node","url":"https://racaz-multitenantserver-node.c-9460142","forwardAuthToken" : true}
     ]
 ---
 apiVersion: apps/v1
@@ -151,7 +151,7 @@ spec:
     - HEAD
     path: /.*
   service:  
-    host: 38e15b50trial-approuter
+    host: racaz-multitenantserver-approuter.c-9460142
     name: kyma-multitenant-approuter-multitenancy
     port: 8080
 ---
@@ -160,4 +160,4 @@ kind: ConfigMap
 metadata:
   name: cluster-domain
 data:
-  cluster-domain: eba936b  ## adapt to your Kyma cluster
+  cluster-domain: c-9460142  ## adapt to your Kyma cluster
