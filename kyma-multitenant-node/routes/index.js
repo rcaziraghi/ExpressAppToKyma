@@ -47,7 +47,7 @@ var kyma_cluster = process.env.CLUSTER_DOMAIN || "UNKNOWN";
  router.put('/callback/v1.0/tenants/*', async function(req, res) {
     //1. create tenant unique URL
     var consumerSubdomain = req.body.subscribedSubdomain;
-    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter." + "eba936b";
+    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter." + "c-67807a1.kyma.ondemand.com";
 
     //2. create apirules with subdomain,
     const kc = new k8s.KubeConfig();

@@ -6,7 +6,7 @@ metadata:
 data:
   destinations: |
     [
-      {"name":"dest_kyma_multitenant_node","url":"https://racaz-multitenantserver-node.c-9460142","forwardAuthToken" : true}
+      {"name":"dest_kyma_multitenant_node","url":"https://mtserver18yk2a98-node.c-67807a1.kyma.ondemand.com","forwardAuthToken" : true}
     ]
 ---
 apiVersion: apps/v1
@@ -42,7 +42,7 @@ spec:
               key: cluster-domain
               name: cluster-domain
         - name: TENANT_HOST_PATTERN
-          value: "^(.*)-approuter.$(CLUSTER_DOMAIN)" 
+          value: "^(.*)-approuter.$(CLUSTER_DOMAIN).kyma.ondemand.com" 
         - name: destinations      # refer to the ConfigMap for destinations you created before
           valueFrom:
             configMapKeyRef:
@@ -151,7 +151,7 @@ spec:
     - HEAD
     path: /.*
   service:  
-    host: racaz-multitenantserver-approuter.c-9460142
+    host: mtserver18yk2a98-approuter
     name: kyma-multitenant-approuter-multitenancy
     port: 8080
 ---
@@ -160,4 +160,4 @@ kind: ConfigMap
 metadata:
   name: cluster-domain
 data:
-  cluster-domain: c-9460142  ## adapt to your Kyma cluster
+  cluster-domain: c-67807a1 ## adapt to your Kyma cluster

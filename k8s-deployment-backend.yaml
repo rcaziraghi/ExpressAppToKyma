@@ -21,7 +21,7 @@ spec:
     - HEAD
     path: /.*
   service:
-    host: racaz-multitenantserver-node.c-9460142.kyma.ondemand.com # replace with the values of your account
+    host: mtserver18yk2a98-node # replace with the values of your account
     name: kyma-multitenant-node-multitenancy
     port: 8080
 status: {}
